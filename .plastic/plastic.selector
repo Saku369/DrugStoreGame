@@ -1,0 +1,4 @@
+repository "DrugStore Game/DrugStore Game@15668895749082@cloud"
+  path "/"
+    br "/main"
+    co "/main"
