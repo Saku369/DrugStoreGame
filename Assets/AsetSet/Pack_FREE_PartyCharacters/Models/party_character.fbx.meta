@@ -13,7 +13,7 @@ ModelImporter:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: body
-    second: {fileID: 2100000, guid: 95d8859fe109f414dae30e5d7ad43d61, type: 2}
+    second: {fileID: 2100000, guid: dd747bfe35549bd40adf543e8dc5bf34, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
@@ -386,6 +386,6 @@ AssetOrigin:
   serializedVersion: 1
   productId: 342650
   packageName: FREE - Party Game Characters
-  packageVersion: 1.0
-  assetPath: Assets/Pack_FREE_PartyCharacters/Models/party_character.fbx
-  uploadId: 819862
+  packageVersion: 1.1
+  assetPath: Assets/AsetSet/Pack_FREE_PartyCharacters/Models/party_character.fbx
+  uploadId: 825602
