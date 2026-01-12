@@ -10,6 +10,15 @@ public class OrderQueue : ScriptableObject
     {
         activeOrders.Clear();
     }
+
+    public void CompleteOrder(Recipe recipe)
+    {
+        if (activeOrders.Contains(recipe))
+        {
+            activeOrders.Remove(recipe);
+        }
+    }
+
     void OnEnable()
     {
         Clear();

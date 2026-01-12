@@ -9,11 +9,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f12e6f13780acb4459d00b8ed6e2156f, type: 3}
+  m_Script: {fileID: 11500000, guid: 602944f06b76c4642b6c088955d68d31, type: 3}
   m_Name: Syrup1
   m_EditorClassIdentifier: Assembly-CSharp::Recipe
   recipeName: Syrup1
-  description: Drug1+Water
-  requiredIngredients:
-  - {fileID: 11400000, guid: 97ee479733dcf8743b94cd2928511a13, type: 2}
-  - {fileID: 11400000, guid: 4dcd41e7b82610142ad41bfd4470f38f, type: 2}
+  processSteps:
+  - workbenchType: 3
+    inputs:
+    - {fileID: 11400000, guid: 97ee479733dcf8743b94cd2928511a13, type: 2}
+    - {fileID: 11400000, guid: 4dcd41e7b82610142ad41bfd4470f38f, type: 2}
+    outputs:
+    - {fileID: 11400000, guid: 560148ebd53685a45b5cb7367c1235f6, type: 2}

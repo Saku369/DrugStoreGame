@@ -1,8 +1,9 @@
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "Ingredient", menuName = "Scriptable Objects/Ingredient")]
+[CreateAssetMenu(fileName = "Ingredient", menuName = "DrugStore/Ingredient")]
 public class Ingredient : ScriptableObject
 {
     public string ingredientName;
     public Sprite icon;
+    public IngredientType type;
 }

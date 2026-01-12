@@ -5,9 +5,12 @@ public class Customer : MonoBehaviour
     public Recipe order;
     public OrderQueue orderQueue;
 
-    void Start()
+    public void Init(Recipe recipe, OrderQueue queue)
     {
-        if (order != null && orderQueue != null)
+        order = recipe;
+        orderQueue = queue;
+
+        if (orderQueue != null && order != null)
         {
             orderQueue.activeOrders.Add(order);
         }

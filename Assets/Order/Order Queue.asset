@@ -9,7 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 381d3f36266ffdb459c6c3e5f3848e48, type: 3}
+  m_Script: {fileID: 11500000, guid: 31a925891ba90a047ae19ecb6744b3cc, type: 3}
   m_Name: Order Queue
   m_EditorClassIdentifier: Assembly-CSharp::OrderQueue
-  activeOrders: []
+  activeOrders:
+  - {fileID: 11400000, guid: c0c709c4904669f48895c838cb4e4d6d, type: 2}
+  - {fileID: 11400000, guid: 5e17742c2b01aa642a3b2bd7e3b3e4bb, type: 2}
+  - {fileID: 11400000, guid: 94ea3e6639fa00647a9302cd280a2f73, type: 2}

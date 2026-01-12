@@ -6,8 +6,7 @@ public class Recipe : ScriptableObject
 {
     public string recipeName;
 
-    [TextArea]
-    public string description;
+    // 工程順リスト
+    public List<ProcessStep> processSteps;
 
-    public List<Ingredient> requiredIngredients;
 }
