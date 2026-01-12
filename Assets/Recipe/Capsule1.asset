@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Recipe
   recipeName: Capsule1
   processSteps:
-  - workbenchType: 3
+  - workbenchType: 1
     inputs:
     - {fileID: 11400000, guid: 97ee479733dcf8743b94cd2928511a13, type: 2}
     - {fileID: 11400000, guid: 120d10385823854479b4771c192a83e9, type: 2}
