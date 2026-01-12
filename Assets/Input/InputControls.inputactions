@@ -50,6 +50,24 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "Grab",
+                    "type": "Button",
+                    "id": "c14301ab-03c5-434f-8bec-38122ba946eb",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Throw",
+                    "type": "Button",
+                    "id": "34b7de8f-c127-4166-9205-6dc578e3d578",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -209,12 +227,32 @@
                 },
                 {
                     "name": "",
+<<<<<<< HEAD
                     "id": "598a4331-c36f-4d5a-bc30-f56f58d4513c",
                     "path": "<Keyboard>/f",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
                     "action": "Interact",
+=======
+                    "id": "8354df3d-bb83-4b8b-a282-512421f22be9",
+                    "path": "<Keyboard>/h",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Grab",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "83f46c95-0d84-4bbd-a5a6-4314f4129181",
+                    "path": "<Keyboard>/j",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Throw",
+>>>>>>> 39c0f55b0d33c45a519457b24b1d106dcda23cff
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

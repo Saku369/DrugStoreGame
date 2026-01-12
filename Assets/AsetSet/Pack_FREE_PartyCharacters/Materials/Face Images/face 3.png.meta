@@ -142,6 +142,7 @@ AssetOrigin:
   serializedVersion: 1
   productId: 342650
   packageName: FREE - Party Game Characters
-  packageVersion: 1.0
-  assetPath: Assets/Pack_FREE_PartyCharacters/Materials/Face Images/face 3.png
-  uploadId: 819862
+  packageVersion: 1.1
+  assetPath: Assets/AsetSet/Pack_FREE_PartyCharacters/Materials/Face Images/face
+    3.png
+  uploadId: 825602
