@@ -13,5 +13,6 @@ MonoBehaviour:
   m_Name: Durability
   m_EditorClassIdentifier: Assembly-CSharp::Ingredient
   ingredientName: Durability
-  icon: {fileID: 0}
+  icon: {fileID: 21300000, guid: f99daa29fa29cb44c91bcfcbbc867d18, type: 3}
   type: 0
+  worldPrefab: {fileID: 6775132000726278346, guid: 706472095dae1ff498e895fbc2d09ecb, type: 3}

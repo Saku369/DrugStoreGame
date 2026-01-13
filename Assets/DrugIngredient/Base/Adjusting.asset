@@ -13,5 +13,6 @@ MonoBehaviour:
   m_Name: Adjusting
   m_EditorClassIdentifier: Assembly-CSharp::Ingredient
   ingredientName: Adjusting
-  icon: {fileID: 21300000, guid: f66f828d7aeaf404ba2f0f97108d6655, type: 3}
+  icon: {fileID: 21300000, guid: 58806e18fecf3f749832d926407da64c, type: 3}
   type: 2
+  worldPrefab: {fileID: 6740057560526033266, guid: 27993ad218b9caf44874d480807729c1, type: 3}

@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class PackingWorkbench : MonoBehaviour
+public class PackingWorkbench : Workbench
 {
     // 何も書かなくてOK
 }

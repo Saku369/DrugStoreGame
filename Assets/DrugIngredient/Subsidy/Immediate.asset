@@ -13,5 +13,6 @@ MonoBehaviour:
   m_Name: Immediate
   m_EditorClassIdentifier: Assembly-CSharp::Ingredient
   ingredientName: Immediate
-  icon: {fileID: 0}
+  icon: {fileID: 21300000, guid: 68fce11cc8ef8d644ab2599112d229e3, type: 3}
   type: 0
+  worldPrefab: {fileID: 6032743159831964501, guid: 5b47b20523cc03344a663c12a220f39b, type: 3}

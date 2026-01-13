@@ -13,5 +13,6 @@ MonoBehaviour:
   m_Name: Heated+colledMix
   m_EditorClassIdentifier: Assembly-CSharp::Ingredient
   ingredientName: Heated+colledMix
-  icon: {fileID: 0}
+  icon: {fileID: 21300000, guid: 3d80a835f84b5304ab9b7eb79252be9f, type: 3}
   type: 1
+  worldPrefab: {fileID: 4035163597341775007, guid: 2778abb1e1ef7884e9d1579c322a1d58, type: 3}

@@ -1,59 +1,71 @@
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 public class PlayerInteractor : MonoBehaviour
 {
-    private Shelf currentShelf;
-    private Workbench currentWorkbench;
+    [Header("Refs")]
     private PlayerInventory inventory;
-    public OrderQueue orderQueue; // ★assetを入れる（UIと同じ）
+    public OrderQueueSO orderQueue;
+
+    [Header("Ray Settings")]
+    public Transform rayOrigin;          // ここからRayを出す（未設定ならtransform）
+    public float interactDistance = 1.2f;
+    public LayerMask interactMask;       // 棚/作業台のレイヤーを入れる（強く推奨）
 
     private void Start()
     {
         inventory = GetComponent<PlayerInventory>();
     }
 
-    private void OnTriggerEnter(Collider other)
+    // Input System: Action名 Interact 前提（PlayerInput Send Messages）
+    public void OnInteract()
     {
-        Shelf shelf = other.GetComponent<Shelf>();
+        if (inventory == null) return;
+
+        Transform origin = rayOrigin != null ? rayOrigin : transform;
+        Vector3 from = origin.position + Vector3.up * 0.5f; // 少し浮かせる
+        Vector3 dir = origin.forward;
+
+        if (!Physics.Raycast(from, dir, out RaycastHit hit, interactDistance, interactMask))
+        {
+            // 何にも当たってない → インベントリ確認
+            inventory.DebugPrintContents();
+            return;
+        }
+
+        // 棚
+        var shelf = hit.collider.GetComponentInParent<Shelf>();
         if (shelf != null)
         {
-            currentShelf = shelf;
+            var ing = shelf.Take();
+            inventory.TryHold(ing);
             return;
         }
 
-        Workbench bench = other.GetComponent<Workbench>();
+        // 作業台
+        var bench = hit.collider.GetComponentInParent<Workbench>();
         if (bench != null)
         {
-            currentWorkbench = bench;
-        }
-    }
+            if (orderQueue == null || orderQueue.activeOrders.Count == 0)
+            {
+                Debug.Log("注文がありません");
+                return;
+            }
 
-    private void OnTriggerExit(Collider other)
-    {
-        if (other.GetComponent<Shelf>() == currentShelf)
-            currentShelf = null;
-
-        if (other.GetComponent<Workbench>() == currentWorkbench)
-            currentWorkbench = null;
-    }
-
-    private void OnInteract()
-    {
-        if (currentShelf != null)
-        {
-            var ing = currentShelf.Take();
-            inventory.AddIngredient(ing);
+            var order = orderQueue.activeOrders[0];
+            bench.Use(inventory, order);
             return;
         }
 
-        if (currentWorkbench != null)
-        {
-            if (orderQueue.activeOrders.Count == 0) return;
+        // 何かには当たったが対象じゃない
+        inventory.DebugPrintContents();
+    }
 
-            var recipe = orderQueue.activeOrders[0];
-            inventory.currentRecipe = recipe; // 同期
-            currentWorkbench.Use(inventory, recipe);
-        }
+    // デバッグ：SceneビューでRayを見えるように
+    private void OnDrawGizmosSelected()
+    {
+        Transform origin = rayOrigin != null ? rayOrigin : transform;
+        Vector3 from = origin.position + Vector3.up * 0.5f;
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawLine(from, from + origin.forward * interactDistance);
     }
 }

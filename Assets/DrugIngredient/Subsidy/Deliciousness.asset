@@ -13,5 +13,6 @@ MonoBehaviour:
   m_Name: Deliciousness
   m_EditorClassIdentifier: Assembly-CSharp::Ingredient
   ingredientName: Deliciousness
-  icon: {fileID: 0}
+  icon: {fileID: 21300000, guid: 2cef344a05e06374caf99dc46f1f6fc0, type: 3}
   type: 0
+  worldPrefab: {fileID: 9008104243704601072, guid: 53c963009e588ff4e8ac3a53b2b95844, type: 3}

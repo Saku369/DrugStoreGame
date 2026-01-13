@@ -1,42 +1,63 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
+[RequireComponent(typeof(Rigidbody))]
 public class PlayerController : MonoBehaviour
 {
-    private Rigidbody rb;
-    [SerializeField]
-    [Tooltip("プレイヤーの速度")]
+    [Header("Move")]
     public float moveSpeed = 5f;
-    private Vector2 moveInput;
-    
-    void Start()
+
+    [Header("Rotate (script only)")]
+    public bool rotateToMoveDirection = true;
+    public float rotateSpeed = 12f;
+
+    private Rigidbody rb;
+    private Vector3 moveInput;
+
+    void Awake()
     {
         rb = GetComponent<Rigidbody>();
-        rb.constraints = RigidbodyConstraints.FreezeRotation;//キャラが勝手に倒れたりするのを防ぐ
+
+        rb.useGravity = false;
+        rb.isKinematic = false; // Dynamic
+        rb.collisionDetectionMode = CollisionDetectionMode.ContinuousDynamic;
+        rb.interpolation = RigidbodyInterpolation.Interpolate;
+
+        // ★物理の回転を全部止める（壁ヒットで勝手に回らない）
+        //   ただし見た目の向きは transform.rotation をスクリプトで変える
+        rb.constraints = RigidbodyConstraints.FreezeRotationX
+                       | RigidbodyConstraints.FreezeRotationY
+                       | RigidbodyConstraints.FreezeRotationZ
+                       | RigidbodyConstraints.FreezePositionY;
     }
 
-    // --- 移動入力（WASD / スティック） ---
-    private void OnMove(InputValue value)
+    // Input System: Move (Vector2)
+    public void OnMove(InputValue value)
     {
-        moveInput = value.Get<Vector2>(); // ← 入力が0なら自動で Vector2.zero が入る
+        Vector2 v = value.Get<Vector2>();
+        moveInput = new Vector3(v.x, 0f, v.y);
     }
 
-    private void FixedUpdate()
+    void FixedUpdate()
     {
-        // 入力を3D空間に変換
-        Vector3 dir = new Vector3(moveInput.x, 0, moveInput.y);
+        // 速度
+        Vector3 v = moveInput.sqrMagnitude > 0.0001f
+            ? moveInput.normalized * moveSpeed
+            : Vector3.zero;
 
-        // 斜め移動も
-        rb.MovePosition(rb.position + dir * moveSpeed * Time.fixedDeltaTime);
-        // 入力方向へキャラを向ける
-        if (dir != Vector3.zero)
+        // ★壁に当たると止まる：物理に任せる（水平だけ更新）
+        // Unityのバージョンによっては linearVelocity が無いので velocity を使う
+        rb.linearVelocity = new Vector3(v.x, 0f, v.z);
+
+        // ★向きはスクリプトだけで変える（物理の反作用で回らない）
+        if (rotateToMoveDirection && v.sqrMagnitude > 0.0001f)
         {
-            transform.forward = dir.normalized;
-        }
-       
-        if (moveInput != Vector2.zero)
-        {
-            Debug.Log($"Move Input - X: {moveInput.x}, Y: {moveInput.y}");
+            Quaternion targetRot = Quaternion.LookRotation(v, Vector3.up);
+            transform.rotation = Quaternion.Slerp(
+                transform.rotation,
+                targetRot,
+                rotateSpeed * Time.fixedDeltaTime
+            );
         }
     }
 }

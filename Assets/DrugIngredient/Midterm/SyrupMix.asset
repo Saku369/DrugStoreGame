@@ -13,5 +13,6 @@ MonoBehaviour:
   m_Name: SyrupMix
   m_EditorClassIdentifier: Assembly-CSharp::Ingredient
   ingredientName: SyrupMix
-  icon: {fileID: 0}
+  icon: {fileID: 21300000, guid: 933fb5a83e31aa74886b951aa1b9fbf5, type: 3}
   type: 1
+  worldPrefab: {fileID: 4035163597341775007, guid: 2778abb1e1ef7884e9d1579c322a1d58, type: 3}

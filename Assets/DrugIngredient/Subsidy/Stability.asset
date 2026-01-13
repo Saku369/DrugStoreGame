@@ -13,5 +13,6 @@ MonoBehaviour:
   m_Name: Stability
   m_EditorClassIdentifier: Assembly-CSharp::Ingredient
   ingredientName: Stability
-  icon: {fileID: 0}
+  icon: {fileID: 21300000, guid: 43c148cf820cc324d80516aeea61a4a1, type: 3}
   type: 0
+  worldPrefab: {fileID: 806161995665235223, guid: 5c5eb240db323724c8b0ea401242f7bd, type: 3}

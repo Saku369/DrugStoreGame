@@ -1,0 +1,36 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5ee291045adfa044f95c79553bcf10d9, type: 3}
+  m_Name: Syrup Template
+  m_EditorClassIdentifier: Assembly-CSharp::RecipeTemplate
+  templateName: SyrupTemplate
+  steps:
+  - workbenchType: 0
+    inputs: []
+    outputs:
+    - {fileID: 11400000, guid: 8572e3af28d56b0469292bd6e5d11de0, type: 2}
+    useOrderInputs: 1
+    outputFinalProduct: 0
+  - workbenchType: 1
+    inputs:
+    - {fileID: 11400000, guid: 8572e3af28d56b0469292bd6e5d11de0, type: 2}
+    outputs:
+    - {fileID: 11400000, guid: be2be6df714a42b4e8516ab1a5a7bd16, type: 2}
+    useOrderInputs: 0
+    outputFinalProduct: 0
+  - workbenchType: 4
+    inputs:
+    - {fileID: 11400000, guid: be2be6df714a42b4e8516ab1a5a7bd16, type: 2}
+    outputs:
+    - {fileID: 11400000, guid: 1bb2a5413e1e2b34babf8da17608c492, type: 2}
+    useOrderInputs: 0
+    outputFinalProduct: 1

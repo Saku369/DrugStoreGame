@@ -4,19 +4,20 @@ using UnityEngine;
 public class CustomerSpawner : MonoBehaviour
 {
     public Customer customerPrefab;
-    public Recipe[] recipePool;
-    public OrderQueue orderQueue;
+    public Transform spawnPoint;
 
     public float spawnInterval = 30f;
-    public Transform spawnPoint;
+
+    public OrderFactory factory;
+    public OrderQueueSO orderQueue;
 
     private void Start()
     {
-        SpawnOne();                 // 最初の1人（不要なら消してOK）
-        StartCoroutine(SpawnLoop());
+        SpawnOne(); // 最初に1人（不要なら消してOK）
+        StartCoroutine(Loop());
     }
 
-    private IEnumerator SpawnLoop()
+    private IEnumerator Loop()
     {
         while (true)
         {
@@ -27,30 +28,21 @@ public class CustomerSpawner : MonoBehaviour
 
     private void SpawnOne()
     {
-        if (customerPrefab == null)
-        {
-            Debug.LogError("customerPrefab が未設定");
-            return;
-        }
-        if (orderQueue == null)
-        {
-            Debug.LogError("orderQueue が未設定（OrderQueue.asset を入れて）");
-            return;
-        }
-        if (recipePool == null || recipePool.Length == 0)
-        {
-            Debug.LogError("recipePool が空（Recipe.asset を配列に入れて）");
-            return;
-        }
+        if (customerPrefab == null || factory == null || orderQueue == null) return;
 
-        Recipe recipe = recipePool[Random.Range(0, recipePool.Length)];
+        // 注文生成
+        Order order = factory.CreateRandomOrder();
 
+        // 客生成
         Vector3 pos = spawnPoint != null ? spawnPoint.position : transform.position;
         Quaternion rot = spawnPoint != null ? spawnPoint.rotation : transform.rotation;
 
         Customer c = Instantiate(customerPrefab, pos, rot);
-        c.Init(recipe, orderQueue);
+        c.Init(order);
 
-        Debug.Log($"客生成：{recipe.recipeName} / 注文数={orderQueue.activeOrders.Count}");
+        // 注文追加（UIが参照する）
+        orderQueue.activeOrders.Add(order);
+
+        Debug.Log($"客生成：{order.orderName} / 注文数={orderQueue.activeOrders.Count}");
     }
 }

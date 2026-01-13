@@ -13,5 +13,6 @@ MonoBehaviour:
   m_Name: TabletMix
   m_EditorClassIdentifier: Assembly-CSharp::Ingredient
   ingredientName: TabletMix
-  icon: {fileID: 0}
+  icon: {fileID: 21300000, guid: 43d98905485b2ab4987225cc2426e30e, type: 3}
   type: 0
+  worldPrefab: {fileID: 6740057560526033266, guid: 27993ad218b9caf44874d480807729c1, type: 3}
